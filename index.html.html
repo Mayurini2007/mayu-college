@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> M College Admissions</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Arial', sans-serif;
+      background:#2e0a3f;
+      color:#fff;
+      line-height:1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #6c63ff, #b450d6);
+      padding:50px 20px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    }
+    header h1 { font-size:3rem; margin-bottom:10px; color:#fff; text-shadow:0 0 10px #fff; }
+    header p { font-size:1.2rem; color:#f0e6ff; }
+    .cta-button { display:inline-block; margin-top:20px; padding:15px 30px; font-size:1.2rem; border:none; border-radius:30px; background:#ff85c0; color:#fff; cursor:pointer; transition:0.3s ease; text-decoration:none; }
+    .cta-button:hover { transform:scale(1.1); background:#e666aa; box-shadow:0 0 20px #ff85c0; }
+    section { padding:50px 20px; max-width:1200px; margin:auto; }
+    .features { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+    .card { background:#3b0d5c; border-radius:20px; padding:30px; width:300px; text-align:center; transition:0.3s ease; }
+    .card:hover { transform:translateY(-10px); box-shadow:0 0 20px #ff85c0; }
+    .card h3 { margin-bottom:15px; color:#ffb0e0; }
+    .card p { color:#d1b0ff; }
+    form, .thank-you {
+      background:#3b0d5c;
+      padding:30px;
+      border-radius:20px;
+      max-width:500px;
+      margin:50px auto;
+      text-align:center;
+    }
+    form h2, .thank-you h2 { color:#ffb0e0; margin-bottom:20px; }
+    form input, form select, form textarea { width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none; }
+    form button { width:100%; padding:15px; border:none; border-radius:30px; background:#ff85c0; color:#fff; font-size:1.1rem; cursor:pointer; transition:0.3s ease; }
+    form button:hover { transform:scale(1.05); background:#e666aa; box-shadow:0 0 15px #ff85c0; }
+    .thank-you p { color:#d1b0ff; font-size:1.2rem; margin-bottom:20px; }
+    footer { background:#1a0424; text-align:center; padding:30px 20px; margin-top:50px; }
+    footer p { color:#a385c5; }
+    @media(max-width:768px){ .features{ flex-direction:column; align-items:center; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1> M  College Admissions</h1>
+    <p>Your future starts here. Apply now and join our vibrant college community!</p>
+    <a href="#admission-form" class="cta-button">Apply Now</a>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:40px; color:#ffb0e0;">Why Choose Us?</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Experienced Faculty</h3>
+        <p>Learn from experts who are passionate about teaching and mentoring students.</p>
+      </div>
+      <div class="card">
+        <h3>Modern Facilities</h3>
+        <p>State-of-the-art labs, libraries, and classrooms to enhance your learning experience.</p>
+      </div>
+      <div class="card">
+        <h3>Vibrant Campus Life</h3>
+        <p>Participate in clubs, events, and activities that make college life unforgettable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Form -->
+  <section id="admission-form">
+    <form id="admissionForm">
+      <h2>Admission Form</h2>
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <select name="program" required>
+        <option value="">Select Program</option>
+        <option value="bachelor">Bachelor's</option>
+        <option value="master">Master's</option>
+        <option value="phd">PhD</option>
+      </select>
+      <textarea name="intro" placeholder="Brief Introduction" rows="4" required></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <!-- Thank You Message -->
+    <div class="thank-you" id="thankYou" style="display:none;">
+      <h2>🎉 Thank You!</h2>
+      <p id="thankYouMessage"></p>
+      <button onclick="goBack()">Go Back</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Purple College | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('admissionForm');
+    const thankYouDiv = document.getElementById('thankYou');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); // prevent page reload
+      const name = form.elements['name'].value;
+      thankYouMessage.textContent = `Thank you, ${name}, for submitting your application. We will contact you soon!`;
+      form.style.display = 'none';
+      thankYouDiv.style.display = 'block';
+    });
+
+    function goBack(){
+      form.style.display = 'block';
+      thankYouDiv.style.display = 'none';
+      form.reset();
+    }
+  </script>
+
+</body>
+</html>
